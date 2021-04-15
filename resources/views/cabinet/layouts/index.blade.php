@@ -20,6 +20,9 @@
     @include('cabinet/layouts/navbar')
     <div class="page-content">
       @include('cabinet/layouts/menubar')
+      @if(request()->routeIs('cabinet.admin.control.*'))
+        @include('cabinet/component/adminpanel/sidebar_second_admin')
+      @endif
       <div class="content-wrapper">
         <div class="content">
           @yield('content')

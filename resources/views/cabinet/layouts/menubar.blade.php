@@ -36,9 +36,9 @@
       <div class="collapse" id="user-nav">
         <ul class="nav nav-sidebar">
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('cabinet.settings') }}" class="nav-link">
               <i class="icon-user-plus"></i>
-              <span>[пусто]</span>
+              <span>[Налаштування]</span>
             </a>
           </li>
 
@@ -89,10 +89,10 @@
           <i class="icon-menu" title="Main"></i>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link ">
+          <a href="{{ route('cabinet.admin.control.dashboard') }}" class="nav-link ">
             <i class="mi-backspace"></i>
             <span>
-              Керування користувачами
+              Dashboard (управління)
             </span>
           </a>
         </li>
