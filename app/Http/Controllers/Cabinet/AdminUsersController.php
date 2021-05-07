@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Cabinet;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use App\Models\User;
 
-class AdminUsersController extends BaseController
-{
-  public function listUser(){
-    return view('cabinet.adminka.users');
+use Illuminate\Support\Carbon;
+
+class AdminUsersController extends BaseController {
+
+  public function listUser() {
+    $userList = User::with('UserSettinged')->get();
+    return view('cabinet.adminka.users', compact(['userList']));
   }
-  
-  public function listapp(){
-    return view('cabinet.adminka.regapp');
-  }
+
+
 }

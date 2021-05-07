@@ -11,7 +11,7 @@
   </form>
   @else
   <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">@lang('home.login')</a>
-  <a href="{{ route('leave_form') }}">@lang('home.live.form')</a>
+  <a href="{{ route('register') }}">@lang('home.live.form')</a>
   @endauth
 </div>
 @endif

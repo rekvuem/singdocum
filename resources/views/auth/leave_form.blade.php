@@ -98,15 +98,6 @@
         </div>
 
         <div class="form-group form-group-feedback form-group-feedback-left">
-          <input id='position' type="text" class="form-control" 
-                 name="responsible" value="{{ old('responsible') }}" autocomplete="off" placeholder="{{ __('Відповідальний на кафедрі за (вказати вид роботи)') }}" >
-          <div class="form-control-feedback">
-            <i class="icon-user-tie text-muted"></i>
-          </div>
-        </div>
-
-
-        <div class="form-group form-group-feedback form-group-feedback-left">
           <input id="number_mobile" type="tel" type="text" class="form-control" 
                  name="num_mobile" value="{{ old('num_mobile') }}" autocomplete="off" placeholder="{{ __('+38 0__ ___ __ __') }}"  required>
           <div class="form-control-feedback">

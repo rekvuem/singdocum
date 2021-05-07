@@ -5,6 +5,7 @@
 <div class="row">
   <div class="col-3">
     <div class="card rounded-0">
+      {{ Cookie::get('Avatar') }}
       <div class="card-header font-weight-black">Налаштування</div>
       <form action="{{route('cabinet.settings.info', Auth::id())}}" method="POST">
         @csrf
@@ -58,7 +59,7 @@
         {{method_field('PUT')}}
         <div class="card-body">
           <div class="form-group">
-            <input class="form-control" type="password" name="newpass" value="" placeholder="Новий парол">
+            <input class="form-control" type="password" name="newpass" value="" autocomplete  placeholder="Новий парол">
             @if ($errors->has('newpass'))
             @foreach ($errors->get('newpass') as $error)
             <span class="badge d-block bg-teal-600 form-text">{{ $error }}</span>
@@ -66,7 +67,7 @@
             @endif
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" name="repass" value="" placeholder="Підвердити парол">
+            <input class="form-control" type="password" name="repass" value="" autocomplete  placeholder="Підвердити парол">
             @if ($errors->has('repass'))
             @foreach ($errors->get('repass') as $error)
             <span class="badge d-block bg-teal-600 form-text">{{ $error }}</span>

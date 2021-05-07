@@ -79,6 +79,7 @@ class SettingsController extends BaseController {
     
       $sortName     = Str::before($getFileName, '.' . $extension);
       $slugFilename = Str::finish(Str::slug($sortName), '.' . $extension);
+
     
     if (in_array($extension, $enable_extension))
     {
@@ -86,8 +87,12 @@ class SettingsController extends BaseController {
       if ($fileSize <= $MaxSizeFile)
       {
         $request->session()->flash('add', 'Фото успішно завантажен!');
-        UserSettings::where('user_id',$user)->update(['foto'=>'foto/'.$user.'/'.$slugFilename.'']);
-        Storage::putFileAs('foto/'.$user.'/', $files,$slugFilename);
+        $selectFirst= UserSettings::where('user_id',$user)->first();
+        $slugFimilia  = Str::slug($selectFirst->familia)."_".$slugFilename;
+        Storage::delete($selectFirst->foto);
+        sleep(3);
+        UserSettings::where('user_id',$user)->update(['foto'=>'foto/'.$slugFimilia.'']);
+        Storage::putFileAs('foto/', $files, $slugFimilia);
       } else
       {
         $request->session()->flash('error', 'Файл вантажить більше 4Mb!');

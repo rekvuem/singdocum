@@ -36,9 +36,6 @@
           <li class="nav-item">
             <a href="{{ route('cabinet.admin.control.user') }}" class="nav-link"><i class="icon-users2"></i> Користувачі</a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('cabinet.admin.control.app') }}" class="nav-link"><i class="icon-vcard"></i> Заяви на реїстрацію</a>
-          </li>
         </ul>
       </div>
 				</div>

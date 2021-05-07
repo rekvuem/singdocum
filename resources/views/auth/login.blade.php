@@ -2,9 +2,10 @@
 @section('title','Авторизування')
 @section('content_login')
 <div class="content d-flex justify-content-center align-items-center">
-  <form method="POST" action="{{ route('login') }}" class="login-form" >
+  <form method="POST" action="{{ route('login') }}" class="login-form">
     @csrf
     <div class="card mb-0">
+       @include('components/all_massage')
 						<div class="card-body">
         <div class="text-center mb-3">
           <i class="icon-people icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
@@ -54,7 +55,7 @@
         </div>
 
         <div class="form-group">
-          <a href="{{route('leave_form')}}" class="btn btn-light btn-block">заповнити форму для реєстрації</a>          
+          <a href="{{route('register')}}" class="btn btn-light btn-block">форма для реєстрації</a>          
         </div>
         
         

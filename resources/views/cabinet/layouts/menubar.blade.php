@@ -17,9 +17,9 @@
       <div class="sidebar-user-material-body">
         <div class="card-body text-center">
           <a href="#">
-            <img src="" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+            <img src="{{ asset(Cookie::get('Avatar')) }}" class="img-fluid rounded-circle shadow-1 mb-3" width="100" height="100" alt="">
           </a>
-          <h6 class="mb-0 text-white text-shadow-dark">[ПІБ]</h6>
+          <h6 class="mb-0 text-white text-shadow-dark">{!! Cookie::get('userShortPIB') !!}</h6>
           <span class="font-size-sm text-white text-shadow-dark">[відділ/звання/посада]</span>
         </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -38,7 +38,7 @@
           <li class="nav-item">
             <a href="{{ route('cabinet.settings') }}" class="nav-link">
               <i class="icon-user-plus"></i>
-              <span>[Налаштування]</span>
+              <span>Налаштування</span>
             </a>
           </li>
 
@@ -46,7 +46,7 @@
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="icon-exit3"></i>
               <span> 
-                {{ __('Выход') }}
+                {{ __('Вихід') }}
               </span>
             </a>
           </li>

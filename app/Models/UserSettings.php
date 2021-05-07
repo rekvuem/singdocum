@@ -13,10 +13,10 @@ class UserSettings extends Model {
   public $timestamps  = false;
   protected $table    = "users_info";
   protected $fillable = [
-    'familia', 'imya', 'otchestvo', 'number_mobile', 'foto', 'telegram', 'registration_ip', 'deleted_at',
+    'user_id', 'familia', 'imya', 'otchestvo', 'number_mobile', 'foto', 'telegram', 'registration_ip', 'created_at', 'updated_at', 'deleted_at',
   ];
   protected $hidden   = [
-    'user_id', 'created_at', 'updated_at',
+    
   ];
 
   public function UserInfor(){

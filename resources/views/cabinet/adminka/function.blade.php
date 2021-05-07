@@ -3,8 +3,68 @@
 @section('content')
 
 <div class="row">
-  <div class="col-12">
-    <p>Доступ к функціям </p>
+  <div class="col-6">
+    <div class="card">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>функц.</th>
+            <th>Слаг</th>
+            <th>Назва</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($listFunction as $list)
+          <tr>
+            <td>
+              <a href="{{route('cabinet.admin.control.function', ['edit'=>$list->id])}}" class="btn-sm">ред.</a>
+              <form action="{{route('cabinet.admin.control.delete.function', ['delete'=>$list->id])}}" method="POST">
+                @csrf
+                {{method_field('DELETE')}}
+                <input type="submit" class="btn" value="удал.">
+              </form>
+              </td>
+            <td>{{$list->slug}}</td>
+            <td>{{$list->function_title}}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-4">
+    
+      @IF(!request()->query('edit') == null)
+
+      <form action="{{ route('cabinet.admin.control.update.function', ['id' => $FirstDepart->id]) }}" method="POST">
+        @csrf
+        {{method_field('PUT')}}
+        <div class="form-group">
+          <input type="text" name="slugTitle" placeholder="Slug назва" class="form-control" value="{{ $FirstDepart->slug }}" >
+        </div>
+        <div class="form-group">
+          <input type="text" name="textTitle" placeholder="назва посади" class="form-control" value="{{ $FirstDepart->departament_title }}" >
+        </div>
+        <input type="submit" class="btn btn-sm bg-green-600 float-right" value="зберегти">
+      </form>
+
+      @else
+    
+    
+    <div class="card">
+      <form action="{{route('cabinet.admin.control.insert.function')}}" method="POST">
+        @csrf
+        <div class="form-group">
+          <input type="text" name="slugTitle" placeholder="Slug назва" class="form-control" value="">
+        </div>
+        <div class="form-group">
+          <input type="text" name="textTitle" placeholder="назва функціоналу" class="form-control" value="">
+        </div>
+        <input type="submit" class="btn btn-sm bg-green-600 float-right" value="додати">
+      </form>
+      
+      @endif
+    </div>
   </div>
 </div>
 
