@@ -17,13 +17,15 @@
           @foreach($listFunction as $list)
           <tr>
             <td>
-              <a href="{{route('cabinet.admin.control.function', ['edit'=>$list->id])}}" class="btn-sm">ред.</a>
-              <form action="{{route('cabinet.admin.control.delete.function', ['delete'=>$list->id])}}" method="POST">
-                @csrf
-                {{method_field('DELETE')}}
-                <input type="submit" class="btn" value="удал.">
-              </form>
-              </td>
+              <div class="btn-group">
+                <a href="{{route('cabinet.admin.control.function', ['edit'=>$list->id])}}" class="btn btn-sm bg-primary-700"><i class="icon-pencil3"></i></a>
+                <form action="{{route('cabinet.admin.control.delete.function', ['delete'=>$list->id])}}" method="POST">
+                  @csrf
+                  {{method_field('DELETE')}}
+                  <button type="submit" class="btn btn-sm bg-danger-700"><i class="icon-cross3"></i></button>
+                </form>
+              </div>
+            </td>
             <td>{{$list->slug}}</td>
             <td>{{$list->function_title}}</td>
           </tr>
@@ -33,24 +35,24 @@
     </div>
   </div>
   <div class="col-4">
-    
-      @IF(!request()->query('edit') == null)
 
-      <form action="{{ route('cabinet.admin.control.update.function', ['id' => $FirstDepart->id]) }}" method="POST">
-        @csrf
-        {{method_field('PUT')}}
-        <div class="form-group">
-          <input type="text" name="slugTitle" placeholder="Slug назва" class="form-control" value="{{ $FirstDepart->slug }}" >
-        </div>
-        <div class="form-group">
-          <input type="text" name="textTitle" placeholder="назва посади" class="form-control" value="{{ $FirstDepart->departament_title }}" >
-        </div>
-        <input type="submit" class="btn btn-sm bg-green-600 float-right" value="зберегти">
-      </form>
+    @IF(!request()->query('edit') == null)
 
-      @else
-    
-    
+    <form action="{{ route('cabinet.admin.control.update.function', ['id' => $FirstDepart->id]) }}" method="POST">
+      @csrf
+      {{method_field('PUT')}}
+      <div class="form-group">
+        <input type="text" name="slugTitle" placeholder="Slug назва" class="form-control" value="{{ $FirstDepart->slug }}" >
+      </div>
+      <div class="form-group">
+        <input type="text" name="textTitle" placeholder="назва посади" class="form-control" value="{{ $FirstDepart->departament_title }}" >
+      </div>
+      <input type="submit" class="btn btn-sm bg-green-600 float-right" value="зберегти">
+    </form>
+
+    @else
+
+
     <div class="card">
       <form action="{{route('cabinet.admin.control.insert.function')}}" method="POST">
         @csrf
@@ -62,7 +64,7 @@
         </div>
         <input type="submit" class="btn btn-sm bg-green-600 float-right" value="додати">
       </form>
-      
+
       @endif
     </div>
   </div>

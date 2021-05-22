@@ -19,9 +19,9 @@
   </div>
 @endif
 
-@if(session('infor'))
+@if(session('info'))
   <div class="alert bg-info-700 text-white alert-styled-left alert-dismissible">
     <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
-    <span class="font-weight-semibold">{{ session('infor') }}</span>
+    <span class="font-weight-semibold">{{ session('info') }}</span>
   </div>
 @endif

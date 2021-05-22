@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ListDepartament extends Model {
-
-  use HasFactory;
-
+class DocumentCreate extends Model
+{
+    use HasFactory;
+    
   public $timestamps  = false;
-  protected $table    = "list_departament";
+  protected $table    = "document_create";
   protected $fillable = [
-    'slug','departament_title',
+    'jsontext',
   ];
   protected $hidden   = [
   ];
-
 }

@@ -29,7 +29,10 @@
         </div>
 
         <div class="sidebar-user-material-footer">
-          <a href="#user-nav" class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle" data-toggle="collapse"><span>Мій кабінет</span></a>
+          <a href="#user-nav" 
+             class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle" data-toggle="collapse">
+            <span>Мій кабінет</span>
+          </a>
         </div>
       </div>
 
@@ -72,7 +75,14 @@
         </li>
         <!-- /навигация -->
         <!-- Общие меню доступное для всех -->
-        
+        <li class="nav-item">
+          <a href="{{route('cabinet.choose.document')}}" class="nav-link ">
+            <i class="mi-exit-to-app"></i>
+            <span>
+              Вибрати тип документу
+            </span>
+          </a>
+        </li>
         
         
         <!-- /конец общего меню -->

@@ -24,6 +24,7 @@
         @include('cabinet/component/adminpanel/sidebar_second_admin')
       @endif
       <div class="content-wrapper">
+       @yield('header') 
         <div class="content">
           @yield('content')
         </div>

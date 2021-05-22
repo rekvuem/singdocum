@@ -17,12 +17,14 @@
           @foreach($listPosition as $list)
           <tr>
             <td>
-              <a href="{{route('cabinet.admin.control.position', ['edit'=>$list->id])}}" class="btn-sm">ред.</a>
-              <form action="{{route('cabinet.admin.control.delete.position', ['delete'=>$list->id])}}" method="POST">
-                @csrf
-                {{method_field('DELETE')}}
-                <input type="submit" class="btn" value="удал.">
-              </form>
+              <div class="btn-group">
+                <a href="{{route('cabinet.admin.control.position', ['edit'=>$list->id])}}" class="btn btn-sm bg-primary-700"><i class="icon-pencil3"></i></a>
+                <form action="{{route('cabinet.admin.control.delete.position', ['delete'=>$list->id])}}" method="POST">
+                  @csrf
+                  {{method_field('DELETE')}}
+                  <button type="submit" class="btn btn-sm bg-danger-700"><i class="icon-cross3"></i></button>
+                </form>
+              </div>
             </td>
             <td>{{$list->slug}}</td>
             <td>{{$list->position_title}}</td>
@@ -34,7 +36,7 @@
   </div>
   <div class="col-4">
     <div class="card">
-      
+
       @IF(!request()->query('edit') == null)
 
       <form action="{{ route('cabinet.admin.control.update.position', ['id' => $FirstDepart->id]) }}" method="POST">
@@ -50,7 +52,7 @@
       </form>
 
       @else
-      
+
       <form action="{{route('cabinet.admin.control.insert.position')}}" method="POST">
         @csrf
         <div class="form-group">
@@ -61,11 +63,10 @@
         </div>
         <input type="submit" class="btn btn-sm bg-green-600 float-right" value="додати">
       </form>
-      
+
       @endif
     </div>
   </div>
 </div>
-
 
 @endsection

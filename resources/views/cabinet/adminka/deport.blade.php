@@ -17,12 +17,14 @@
           @foreach($listDepart as $list)
           <tr>
             <td>
-              <a href="{{route('cabinet.admin.control.departament', ['edit'=>$list->id])}}" class="btn-sm">ред.</a>
+              <div class="btn-group">
+                <a href="{{route('cabinet.admin.control.departament', ['edit'=>$list->id])}}" class="btn btn-sm bg-primary-700"><i class="icon-pencil3"></i></a>
               <form action="{{route('cabinet.admin.control.delete.departament', ['delete'=>$list->id])}}" method="POST">
                 @csrf
                 {{method_field('DELETE')}}
-                <input type="submit" class="btn" value="удал.">
+                <button type="submit" class="btn btn-sm bg-danger-700"><i class="icon-cross3"></i></button>
               </form>
+              </div>
             </td>
             <td>{{$list->slug}}</td>
             <td>{{$list->departament_title}}</td>

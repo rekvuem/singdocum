@@ -1,7 +1,7 @@
 @extends('cabinet.layouts.index')
 @section('title', 'Зміст користувачів')
 @section('content')
-
+@include('cabinet/component/allmessage')
 <div class="row">
   <div class="col-12">
     <div class="card rounded-0">
@@ -15,22 +15,24 @@
             <td>Telegram</td>
             <td>Місто реїстрації</td>
             <td>Дата реїстрації</td>
-            <td>Дата оновлення</td>
-            <td>Дата бана</td>
           </tr>
         </thead>
         <tbody>
           @foreach($userList as $list)
           <tr>
-            <td><a href="">ред.</a> <a href="">вид.</a></td>
-            <td>{{$list->UserSettinged->familia}}</td>
+            <td>
+              <div class="btn-group">
+                <a href="{{route('cabinet.admin.control.user.edit', $list->id)}}" class="btn btn-sm bg-primary-700"><i class="icon-pencil3"></i></a>
+              </div>
+            </td>
+            <td>{{$list->UserSettinged->familia}} {{$list->UserSettinged->imya}} </td>
             <td>{{$list->email}}</td>
             <td>{{$list->UserSettinged->number_mobile}}</td>
-            <td>{{$list->UserSettinged->telegram}}</td>
+            <td>@if(!$list->UserSettinged->telegram == null) yes @else no @endif </td>
             <td>{{$list->UserSettinged->registration_ip}}</td>
-            <td>{{date('d.m.Y', strtotime($list->UserSettinged->created_at))}}</td>
-            <td>{{date('d.m.Y', strtotime($list->UserSettinged->updated_at))}}</td>
-            <td>{{date('d.m.Y', strtotime($list->UserSettinged->deleted_at))}}</td>             
+            <td>
+              {{date('d.m.Y', strtotime($list->UserSettinged->created_at))}}
+            </td>           
           </tr>
           @endforeach
         </tbody>
