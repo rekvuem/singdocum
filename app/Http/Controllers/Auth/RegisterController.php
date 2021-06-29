@@ -8,6 +8,7 @@ use App\Models\UserSettings;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller {
   /*
@@ -25,10 +26,10 @@ use RegistersUsers;
 
   /**
    * Where to redirect users after registration.
-   *RouteServiceProvider::HOME
+   * RouteServiceProvider::HOME
    * @var string
    */
-  protected $redirectTo = '/login';
+  protected $redirectTo = 'login';
 
   /**
    * Create a new controller instance.
@@ -72,17 +73,23 @@ use RegistersUsers;
           'password' => Hash::make($data['password']),
     ]);
 
-    $userInfor= UserSettings::create([
-      'user_id'         => $userInsert->id,
-      'familia'         => $data['familia'],
-      'imya'            => $data['imya'],
-      'otchestvo'       => $data['otchestvo'],
-      'number_mobile'   => $data['num_mobile'],
-      'foto'            => 'foto/default.png',
-      'telegram'        => null,
-      'created_at'      => now(),
-      'updated_at'      => now(),
+    $userInfor = UserSettings::create([
+          'user_id'       => $userInsert->id,
+          'familia'       => $data['familia'],
+          'imya'          => $data['imya'],
+          'otchestvo'     => $data['otchestvo'],
+          'number_mobile' => $data['num_mobile'],
+          'foto'          => 'foto/default.png',
+          'telegram'      => null,
+          'created_at'    => now(),
+          'updated_at'    => now(),
     ]);
+
+    DB::table('user_departament')->insert([
+      'user_id'        => $userInsert->id,
+      'departament_id' => 4,
+    ]);
+
 //придумать как вывести сообщение об регистрации
     return $userInsert;
   }

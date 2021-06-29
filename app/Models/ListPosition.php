@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\ListPosition;
+use App\Models\ListDepartament;
+
 class ListPosition extends Model {
 
   use HasFactory;
@@ -12,9 +15,12 @@ class ListPosition extends Model {
   public $timestamps  = false;
   protected $table    = "list_positon";
   protected $fillable = [
-    'slug', 'position_title',
+    'departament_id', 'slug', 'position_title',
   ];
   protected $hidden   = [
   ];
 
+  public function LPosit() {
+    return $this->belongsToMany(ListDepartament::class, 'list_positon', 'id', 'departament_id');
+  }
 }

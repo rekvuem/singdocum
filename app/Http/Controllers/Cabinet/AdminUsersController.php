@@ -7,7 +7,9 @@ use App\Models\User;
 use App\Models\ListDepartament;
 use App\Models\ListPosition;
 use App\Models\ListFunction;
+use App\Models\ListFaculty;
 use App\Models\UserSettings;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminUsersController extends BaseController {
@@ -21,10 +23,14 @@ class AdminUsersController extends BaseController {
   public function user_edit($takeID) {
     $userEdit     = User::with(['UserSettinged', 'UserAccessDepart', 'UserAccessPosit', 'UserAccessFunct'])->where('id', $takeID)->first();
     $ListDepart   = ListDepartament::get();
-    $ListPosition = ListPosition::get();
+    $ListPosition = ListPosition::with('LPosit')->get();
     $ListFunction = ListFunction::get();
-//    dd($userEdit->toArray());
-    return view('cabinet.adminka.user_edit', compact(['userEdit', 'ListDepart', 'ListPosition', 'ListFunction']));
+    $ListFaculty  = ListFaculty::get();
+
+//    dd($ListPosition->toArray());
+    return view('cabinet.adminka.user_edit', compact([
+      'userEdit', 'ListDepart', 'ListPosition', 'ListFunction', 'ListFaculty',
+    ]));
   }
 
   public function user_upd(Request $req, $takeID) {
@@ -53,13 +59,13 @@ class AdminUsersController extends BaseController {
       'otchestvo' => $req->otchestvo,
     ]);
 
-    $SelectUser = User::where('id',$takeID)->first();
+    $SelectUser = User::where('id', $takeID)->first();
+    $SelectUser->UserFaculty()->sync($req->roles_faculty);
     $SelectUser->UserAccessDepart()->sync($req->roles_departament);
     $SelectUser->UserAccessPosit()->sync($req->roles_position);
     $SelectUser->UserAccessFunct()->sync($req->roles_function);
 
     return redirect()->route('cabinet.admin.control.user');
-//    return dd($req->all());
   }
 
 }

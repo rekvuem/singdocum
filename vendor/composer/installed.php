@@ -438,6 +438,24 @@
         0 => '*',
       ),
     ),
+    'laminas/laminas-escaper' => 
+    array (
+      'pretty_version' => '2.7.0',
+      'version' => '2.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5e04bc5ae5990b17159d79d331055e2c645e5cc5',
+    ),
+    'laminas/laminas-zendframework-bridge' => 
+    array (
+      'pretty_version' => '1.2.0',
+      'version' => '1.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6cccbddfcfc742eb02158d6137ca5687d92cee32',
+    ),
     'laravel/framework' => 
     array (
       'pretty_version' => 'v8.35.1',
@@ -637,6 +655,15 @@
       array (
       ),
       'reference' => '6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0',
+    ),
+    'phpoffice/phpword' => 
+    array (
+      'pretty_version' => '0.18.2',
+      'version' => '0.18.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'aca10785cf68dc95d7f6fac4fe854979fef3f8db',
     ),
     'phpoption/phpoption' => 
     array (
@@ -1306,6 +1333,13 @@
       array (
       ),
       'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
+    ),
+    'zendframework/zend-escaper' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '^2.6.1',
+      ),
     ),
   ),
 );

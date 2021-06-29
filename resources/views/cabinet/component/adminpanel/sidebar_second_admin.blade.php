@@ -59,10 +59,16 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('cabinet.admin.control.position') }}" class="nav-link"><i class="icon-star-half"></i> Посада</a>
-          </li>
+          </li>    
           <li class="nav-item">
             <a href="{{ route('cabinet.admin.control.function') }}" class="nav-link"><i class="icon-cog5"></i> Функції возможності</a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('cabinet.admin.control.faculty') }}" class="nav-link"><i class="icon-graduation2"></i> Факультет</a>
+          </li>
+         <li class="nav-item">
+            <a href="{{ route('cabinet.admin.control.kafedra') }}" class="nav-link"><i class="icon-graduation2"></i> Кафедра</a>
+          </li>      
         </ul>
       </div>
 				</div>

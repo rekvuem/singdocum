@@ -42,25 +42,25 @@
 
           <div class="form-group">
             @foreach($userEdit->UserAccessDepart as $depart)
-              {{$depart->departament_title}}
+            {{$depart->departament_title}}
             @endforeach
           </div> 
 
           <div class="form-group">
             @foreach($userEdit->UserAccessPosit as $posit)
-              {{$posit->position_title}}
+            {{$posit->position_title}}
             @endforeach
           </div> 
 
           <div class="form-group">
             @foreach($userEdit->UserAccessFunct as $funct)
-              {{$funct->function_title}}
+            {{$funct->function_title}}
             @endforeach
           </div>  
         </div>
       </div>  
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <div class="card">
         <div class="card-head">Зміна паролю</div>
         <div class="card-body">
@@ -72,22 +72,51 @@
           </div>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-head">Факультет</div>
+        <div class="card-body">
+          <div class="form-group">
+            @foreach($ListFaculty as $listing)
+            <div class="form-check form-check-switchery">
+              <label class="form-check-label">
+                <input type="checkbox" name="roles_faculty[]" 
+                       value="{{$listing->id}}"       
+                       class="form-check-input-switchery"  
+                       @if($userEdit->UserFaculty->pluck('id')->contains($listing->id)) checked @endif
+                        data-fouc>
+                {{$listing->dean_title}}
+              </label>
+            </div>               
+            @endforeach
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">Кафедри</div>
+        <div class="card-body">
+
+        </div>
+      </div>
     </div>
-    <div class="col-5">
+
+
+    <div class="col-4">
       <div class="card">
         <div class="card-head">відділ\кафедра\факультет 
-          
+
         </div>
         <div class="card-body">
           @foreach($ListDepart as $role)
-          
+
           <div class="form-check form-check-switchery">
             <label class="form-check-label">
               <input type="checkbox" name="roles_departament[]" 
                      value="{{$role->id}}" 
                      class="form-check-input-switchery"
                      @if($userEdit->UserAccessDepart->pluck('id')->contains($role->id)) checked @endif
-                     data-fouc >
+              data-fouc >
               {{ $role->departament_title }} 
             </label>
           </div>               
@@ -99,12 +128,20 @@
         <div class="card-head">посада</div>
         <div class="card-body">
           @foreach($ListPosition as $role)
+            
           <div class="form-check form-check-switchery">
             <label class="form-check-label">
-              <input type="checkbox" name="roles_position[]" value="{{$role->id}}" class="form-check-input-switchery @if($userEdit->UserAccessPosit->pluck('id')->contains($role->id)) checked @endif" data-fouc>
-              {{$role->position_title}} 
+              <input type="checkbox" name="roles_position[]" 
+                     value="{{$role->id}}" 
+                     class="form-check-input-switchery" 
+                     @if($userEdit->UserAccessPosit->pluck('id')->contains($role->id)) checked @endif
+              data-fouc>
+               @foreach($role->LPosit as $lis) 
+                  {{$lis->departament_title}} / {{$role->position_title}} 
+               @endforeach 
             </label>
-          </div>               
+          </div>
+            
           @endforeach
         </div>
       </div>
@@ -115,7 +152,9 @@
           @foreach($ListFunction as $role)
           <div class="form-check form-check-switchery">
             <label class="form-check-label">
-              <input type="checkbox" name="roles_function[]" value="{{$role->id}}" class="form-check-input-switchery" data-fouc>
+              <input type="checkbox" name="roles_function[]" value="{{$role->id}}" class="form-check-input-switchery" 
+              @if($userEdit->UserAccessFunct->pluck('id')->contains($role->id)) checked @endif
+                     data-fouc>
               {{$role->function_title}} 
             </label>
           </div>               

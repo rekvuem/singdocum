@@ -16,7 +16,7 @@
 				<div class="sidebar-user-material">
       <div class="sidebar-user-material-body">
         <div class="card-body text-center">
-          <a href="#">
+          <a href="{{ route('cabinet.settings') }}">
             <img src="{{ asset(Cookie::get('Avatar')) }}" class="img-fluid rounded-circle shadow-1 mb-3" width="100" height="100" alt="">
           </a>
           <h6 class="mb-0 text-white text-shadow-dark">{!! Cookie::get('userShortPIB') !!}</h6>
@@ -65,7 +65,7 @@
           <i class="icon-menu" title="Main"></i>
         </li>
         <li class="nav-item">
-          <a href="{{route('cabinet.dashboard')}}" class="nav-link ">
+          <a href="{{route('cabinet.getinfors')}}" class="nav-link ">
             <i class="mi-dashboard"></i>
             <span>
               Головна
@@ -76,23 +76,61 @@
         <!-- /навигация -->
         <!-- Общие меню доступное для всех -->
         <li class="nav-item">
-          <a href="{{route('cabinet.choose.document')}}" class="nav-link ">
-            <i class="mi-exit-to-app"></i>
+          <a href="{{route('cabinet.document.choose')}}" class="nav-link ">
+            <i class="mi-forward"></i>
             <span>
               Вибрати тип документу
             </span>
           </a>
         </li>
-        
-        
         <!-- /конец общего меню -->
         <!-- Меню доступное для пользователя -->
-        
-        
-        
-        <!-- /конец пользователя -->
-        
-        
+        <li class="nav-item">
+          <a href="{{route('cabinet.document.mydocuments')}}" class="nav-link ">
+            <i class="mi-folder-shared"></i>
+            <span>
+              Перечень моїх документів
+              <span class="d-block font-weight-normal opacity-50"><small>мої створені документи</small></span>
+            </span>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a href="{{route('cabinet.distrib.list')}}" class="nav-link ">
+            <i class="mi-more"></i>
+            <span>
+              Розсилка
+              <span class="d-block font-weight-normal opacity-50"><small>документів</small></span>
+            </span>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a href="{{route('cabinet.sign.list')}}" class="nav-link ">
+            <i class="mi-exit-to-app"></i>
+            <span>
+              Рецензія документів
+              <span class="d-block font-weight-normal opacity-50"><small>документи на підпис</small></span>
+            </span>
+          </a>
+        </li>
+
+        @can('chancery-role')
+        <!-- Меню канцелярии -->
+        <li class="nav-item">
+          <a href="{{route('cabinet.chancery')}}" class="nav-link ">
+            <i class="mi-exit-to-app"></i>
+            <span>
+              Створені документи
+              <span class="d-block font-weight-normal opacity-50"><small>канцелярія</small></span>
+            </span>
+          </a>
+        </li>
+        <!-- /Меню канцелярии -->
+        @endcan      
+        @can('adminka')
         <!-- меню администратора -->
         <li class="nav-item-header">
           <div class="text-uppercase font-size-xs line-height-xs">Панел адміністратора</div> 
@@ -126,6 +164,7 @@
             <li class="nav-item"><a href="" class="nav-link">Навчально-методичне забезпечення</a></li>
           </ul>
         </li>-->
+        @endcan    
       </ul>
 
 

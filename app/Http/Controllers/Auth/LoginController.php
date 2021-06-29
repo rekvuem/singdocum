@@ -59,7 +59,7 @@ use AuthenticatesUsers;
   public function logout() {
     Cookie::queue(Cookie::forget('userShortPIB'));
     Cookie::queue(Cookie::forget('userFamil'));
-    Cookie::queue(Cookie::forget('Avatar'));
+//    Cookie::queue(Cookie::forget('Avatar'));
     Auth::logout();
     return redirect()->route('welcome');
   }

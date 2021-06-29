@@ -8,9 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 class DashboardController extends BaseController {
-
+  
   public function dashboard() {
-
     return view('cabinet.dashboard');
   }
 
@@ -22,9 +21,14 @@ class DashboardController extends BaseController {
     $userAvatar   = $UserInformer->foto;
     Cookie::queue(Cookie::forever('userShortPIB', $userShortPIB));
     Cookie::queue(Cookie::forever('userFamil', $userFamilia));
-    Cookie::queue(Cookie::forever('Avatar', $userAvatar)); 
+    
+    IF(Cookie::get('Avatar') == $userAvatar){
+      Cookie::queue(Cookie::forever('Avatar', $userAvatar)); 
+    }else{
+      Cookie::queue(Cookie::forget('Avatar')); 
+      Cookie::queue(Cookie::forever('Avatar', $userAvatar)); 
+    }
     return redirect()->route('cabinet.dashboard');
   }
-
-
+  
 }

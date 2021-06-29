@@ -20,7 +20,7 @@
         <tbody>
           @foreach($userList as $list)
           <tr>
-            <td>
+            <td rowspan="2">
               <div class="btn-group">
                 <a href="{{route('cabinet.admin.control.user.edit', $list->id)}}" class="btn btn-sm bg-primary-700"><i class="icon-pencil3"></i></a>
               </div>
@@ -34,6 +34,23 @@
               {{date('d.m.Y', strtotime($list->UserSettinged->created_at))}}
             </td>           
           </tr>
+          <tr>
+            <td colspan="5" style="height: 5px; font-size: 0.9em; padding: 0; margin: 0;">
+              @foreach($list->UserAccessDepart as $depart)
+                <span class="badge badge-light badge-striped badge-striped-left border-left-success">{{$depart->departament_title}}</span> |
+              @endforeach
+              @foreach($list->UserAccessPosit as $position)
+                <span class="badge badge-light badge-striped badge-striped-left border-left-info">{{$position->position_title}}</span> |
+              @endforeach
+              @foreach($list->UserAccessFunct as $function)
+                <span class="badge badge-light badge-striped badge-striped-left border-left-orange-800">{{$function->function_title}}</span> |
+              @endforeach
+              @foreach($list->UserFaculty as $faculty)
+                <span class="badge badge-light badge-striped badge-striped-left border-left-slate-800">{{$faculty->dean_title}}</span> |
+              @endforeach
+              
+            </td>
+          </tr>
           @endforeach
         </tbody>
       </table>
@@ -46,7 +63,6 @@
 <script src="{{ asset('theme/global_assets/js/plugins/tables/datatables/datatables.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('theme/global_assets/js/plugins/forms/selects/select2.min.js') }}" type="text/javascript"></script>
 
-</a>
 <script>
 $(document).ready(function () {
   $('.select2').select2();

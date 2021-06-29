@@ -11,5 +11,5 @@ abstract class BaseController extends Controller {
     $this->middleware('auth');
   }
 
-  
+    
 }

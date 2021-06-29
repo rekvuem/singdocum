@@ -5,7 +5,6 @@
 <div class="row">
   <div class="col-3">
     <div class="card rounded-0">
-      {{ Cookie::get('Avatar') }}
       <div class="card-header font-weight-black">Налаштування</div>
       <form action="{{route('cabinet.settings.info', Auth::id())}}" method="POST">
         @csrf
@@ -48,7 +47,8 @@
     <div class="card rounded-0">
       <div class="card-header font-weight-black">Додаткове налаштування</div>
       <div class="card-body">
-        [в розробці]
+        [в розробці] / [додати після завантаження до хостинга]
+        добавить телеграмм / подключение почты ведомление
       </div>
     </div>
 

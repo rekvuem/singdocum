@@ -32,7 +32,7 @@
           <input id="email" type="email" 
                  class="form-control" value="{{ old('email') }}" 
                  name="email"
-                 autocomplete="off" 
+                  
                  placeholder="{{ __('E-Mail') }}" required autofocus>
           <div class="form-control-feedback">
             <i class="icon-mention text-muted"></i>
@@ -46,14 +46,14 @@
 
         <div class="form-group form-group-feedback form-group-feedback-left">
           <input id="password" type="password" class="form-control"
-                 name="password" required autocomplete="new-password" placeholder="Пароль">
+                 name="password" required  placeholder="Пароль">
           <div class="form-control-feedback">
             <i class="icon-key text-muted"></i>
           </div>
         </div>
 
         <div class="form-group form-group-feedback form-group-feedback-left">
-          <input id="password-confirm" type="password" class="form-control" placeholder="Повторити пароль" name="password_confirmation" required autocomplete="new-password">
+          <input id="password-confirm" type="password" class="form-control" placeholder="Повторити пароль" name="password_confirmation" required>
           <div class="form-control-feedback">
             <i class="icon-key text-muted"></i>
           </div>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="form-group form-group-feedback form-group-feedback-left">
-          <input type="text" class="form-control" name="familia" value="{{ old('familia') }}" autocomplete="off" placeholder="Призвіще" required >
+          <input type="text" class="form-control" name="familia" value="{{ old('familia') }}"  placeholder="Призвіще" required >
           <div class="form-control-feedback">
             <i class="icon-vcard text-muted"></i>
           </div>
@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group form-group-feedback form-group-feedback-left">
-          <input type="text" class="form-control" name="imya" value="{{ old('imya') }}" autocomplete="off" placeholder="І`мя" required>
+          <input type="text" class="form-control" name="imya" value="{{ old('imya') }}"  placeholder="І`мя" required>
           <div class="form-control-feedback">
             <i class="icon-vcard text-muted"></i>
           </div>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="form-group form-group-feedback form-group-feedback-left">
-          <input type="text" class="form-control" name="otchestvo" value="{{ old('otchestvo') }}" autocomplete="off" placeholder="Побатькові" >
+          <input type="text" class="form-control" name="otchestvo" value="{{ old('otchestvo') }}"  placeholder="Побатькові" >
           <div class="form-control-feedback">
             <i class="icon-vcard text-muted"></i>
           </div>
@@ -107,7 +107,7 @@
 
         <div class="form-group form-group-feedback form-group-feedback-left">
           <input id="number_mobile" type="tel" type="text" class="form-control" 
-                 name="num_mobile" value="{{ old('num_mobile') }}" autocomplete="off" placeholder="{{ __('+38 0__ ___ __ __') }}"  required>
+                 name="num_mobile" value="{{ old('num_mobile') }}"  placeholder="{{ __('+38 0__ ___ __ __') }}"  required>
           <div class="form-control-feedback">
             <i class="icon-mobile2 text-muted"></i>
           </div>

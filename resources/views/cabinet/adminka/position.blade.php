@@ -9,6 +9,7 @@
         <thead>
           <tr>
             <th>функц.</th>
+            <th>Отдел</th>
             <th>Слаг</th>
             <th>Назва</th>
           </tr>
@@ -26,6 +27,7 @@
                 </form>
               </div>
             </td>
+            <td>{{$list->departament_id	}}</td>
             <td>{{$list->slug}}</td>
             <td>{{$list->position_title}}</td>
           </tr>
@@ -39,14 +41,21 @@
 
       @IF(!request()->query('edit') == null)
 
-      <form action="{{ route('cabinet.admin.control.update.position', ['id' => $FirstDepart->id]) }}" method="POST">
+      <form action="{{ route('cabinet.admin.control.update.position', ['id' => $FirstPosit->id]) }}" method="POST">
         @csrf
         {{method_field('PUT')}}
         <div class="form-group">
-          <input type="text" name="slugTitle" placeholder="Slug назва" class="form-control" value="{{ $FirstDepart->slug }}" >
+          <select name="depart">
+            @foreach($listDepart as $list)
+            <option value="{{$list->id}}" @if($list->id ?? $FirstPosit->departament_id) selected="" @endif>{{$list->departament_title}}</option>
+            @endforeach
+          </select>
         </div>
         <div class="form-group">
-          <input type="text" name="textTitle" placeholder="назва посади" class="form-control" value="{{ $FirstDepart->departament_title }}" >
+          <input type="text" name="slugTitle" placeholder="Slug назва" class="form-control" value="{{ $FirstPosit->slug }}" >
+        </div>
+        <div class="form-group">
+          <input type="text" name="textTitle" placeholder="назва посади" class="form-control" value="{{ $FirstPosit->position_title }}" >
         </div>
         <input type="submit" class="btn btn-sm bg-green-600 float-right" value="зберегти">
       </form>
@@ -55,6 +64,13 @@
 
       <form action="{{route('cabinet.admin.control.insert.position')}}" method="POST">
         @csrf
+        <div class="form-group">
+          <select name="depart">
+            @foreach($listDepart as $list)
+            <option value="{{$list->id}}">{{$list->departament_title}}</option>
+            @endforeach
+          </select>
+        </div>
         <div class="form-group">
           <input type="text" name="slugTitle" placeholder="Slug назва" class="form-control" value="">
         </div>
