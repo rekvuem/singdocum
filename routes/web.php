@@ -13,6 +13,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Cabinet\DocumentController;
 use App\Http\Controllers\Cabinet\SingingController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Models\UserSettings;
+use App\Notifications\TelegramHello;
+use Illuminate\Support\Facades\Notification;
 
 /*
   |--------------------------------------------------------------------------
@@ -54,6 +57,16 @@ Route::prefix('/cabinet')->name('cabinet.')->namespace('Cabinet')->middleware(['
   Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');    //проверить нужен ли этот роут для главной страницы
 //  налаштування своїх настроєк
   Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+  
+  Route::get('/telegram', [SettingsController::class, 'TelegramUser'])->name('insert.telegram');
+  
+  Route::get('/send_telegram_msg', function(){
+    $userSelect = UserSettings::where('user_id', Auth::id())
+        ->first();
+    Notification::send($userSelect->telegram_user, new TelegramHello());
+    return redirect()->route('cabinet.dashboard');
+  });
+  
   Route::put('/updpass/{user}', [SettingsController::class, 'checkingPass'])->name('settings.updpass');
   Route::put('/updinfo/{user}', [SettingsController::class, 'updateInfo'])->name('settings.info');
   Route::put('/insertinfo/{user}', [SettingsController::class, 'insertFoto'])->name('settings.foto');

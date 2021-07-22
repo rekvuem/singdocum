@@ -456,6 +456,15 @@
       ),
       'reference' => '6cccbddfcfc742eb02158d6137ca5687d92cee32',
     ),
+    'laravel-notification-channels/telegram' => 
+    array (
+      'pretty_version' => '0.5.1',
+      'version' => '0.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2cedb10b78219cc91a285eaa5a3de0db405cc207',
+    ),
     'laravel/framework' => 
     array (
       'pretty_version' => 'v8.35.1',

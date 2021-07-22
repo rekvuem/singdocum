@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Cookie;
 class DashboardController extends BaseController {
   
   public function dashboard() {
+//    
+//    $showDate=cal_days_in_month(CAL_GREGORIAN, 7, 2021);
+    
+    
     return view('cabinet.dashboard');
   }
 

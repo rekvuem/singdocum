@@ -47,8 +47,12 @@
     <div class="card rounded-0">
       <div class="card-header font-weight-black">Додаткове налаштування</div>
       <div class="card-body">
-        [в розробці] / [додати після завантаження до хостинга]
-        добавить телеграмм / подключение почты ведомление
+        <script async src="https://telegram.org/js/telegram-widget.js?15" 
+          data-telegram-login="SingDocumBOT" 
+          data-size="small" 
+          data-userpic="false" 
+          data-auth-url="{{route('cabinet.insert.telegram')}}">
+        </script>
       </div>
     </div>
 

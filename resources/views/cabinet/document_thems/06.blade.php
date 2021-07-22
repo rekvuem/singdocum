@@ -95,7 +95,6 @@
                 @endforelse 
                 @endforeach
                 @endforeach
-
               </option>
               @endforeach
             </select>

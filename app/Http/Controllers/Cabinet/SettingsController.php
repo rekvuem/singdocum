@@ -107,5 +107,14 @@ class SettingsController extends BaseController {
       return back();
     }
   }
+  
+  public function TelegramUser(Request $request){
+    
+    UserSettings::where('user_id', Auth::id())->update([
+      'telegram_user' => $request->id,
+    ]);
+    return redirect()->route('cabinet.settings');
+  }
+  
 
 }
